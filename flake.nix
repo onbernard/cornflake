@@ -7,21 +7,9 @@
   };
 
   outputs = inputs@{ self, ... }:
-  with inputs;
-  flake-utils.lib.eachDefaultSystem (system:
-  let
-    overlays = [
-      (import ./overlays/linux-firmware-git)
-    ];
-    pkgs = import nixpkgs { inherit system; overlays = overlays; };
-  in
   {
-    overlays = overlays;
-    packages = {
-      "linux-firmware-git" = with pkgs; [ linux-firmware-git ];
+    overlays = {
+      default = final: prev: import ./overlays/linux-firmware-git final prev;
     };
-    devShell = pkgs.mkShell {
-      buildInputs = with pkgs; [ git ];
-    };
-  });
+  };
 }
