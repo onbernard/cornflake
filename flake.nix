@@ -16,6 +16,7 @@
     pkgs = import nixpkgs { inherit system; overlays = overlays; };
   in
   {
+    overlays = overlays;
     packages = {
       "linux-firmware-git" = with pkgs; [ linux-firmware-git ];
     };
