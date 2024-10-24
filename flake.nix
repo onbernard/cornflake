@@ -10,7 +10,7 @@
   with inputs;
   let
     linux-firmware-git = import ./overlays/linux-firmware-git;
-    intel-media-driver-git = import ./overlays/intel-media-driver-git.nix;
+    intel-media-driver-git = import ./overlays/intel-media-driver-git;
   in
   {
     overlays = {
