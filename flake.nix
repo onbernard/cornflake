@@ -7,9 +7,21 @@
   };
 
   outputs = inputs@{ self, ... }:
+  with inputs;
+  let
+    linux-firmware-git = import ./overlays/linux-firmware-git;
+    intel-media-driver-git = import ./overlays/intel-media-driver-git.nix;
+  in
   {
     overlays = {
-      default = final: prev: import ./overlays/linux-firmware-git final prev;
+      default =  nixpkgs.lib.composeExtensions intel-media-driver-git linux-firmware-git;
+    };
+    devShells.x86_64-linux.default = 
+    let
+      pkgs = import nixpkgs { system = "x86_64-linux"; overlays = [ self.overlays.default]; };
+    in
+    nixpkgs.legacyPackages.x86_64-linux.mkShell {
+      buildInputs = [ pkgs.linux-firmware-git pkgs.intel-media-driver-git ];
     };
   };
 }
