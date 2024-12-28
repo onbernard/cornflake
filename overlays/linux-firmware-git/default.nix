@@ -1,10 +1,10 @@
 final: prev:
 {
   linux-firmware-git = prev.linux-firmware.overrideAttrs (oldAttrs: {
-    version = "7e1bc11980a4528af56a91d7989ec75e3fea78e3";
+    version = "9e1d9ae6ef3d3e00e8551266b9c96ea1ace814e4";
     src = builtins.fetchGit {
       url = "https://git.kernel.org/pub/scm/linux/kernel/git/firmware/linux-firmware.git";
-      rev = "7e1bc11980a4528af56a91d7989ec75e3fea78e3";
+      rev = "9e1d9ae6ef3d3e00e8551266b9c96ea1ace814e4";
     };
   });
 }
