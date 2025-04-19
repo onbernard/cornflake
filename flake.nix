@@ -15,17 +15,19 @@
         };
 
         mojo = pkgs.callPackage ./packages/mojo.nix {};
+        magic = pkgs.callPackage ./packages/magic.nix {};
         linux-firmware-git = import ./overlays/linux-firmware-git;
         intel-media-driver-git = import ./overlays/intel-media-driver-git;
       in {
         packages = {
           mojo = mojo;
+          magic = magic;
           linux-firmware-git = linux-firmware-git;
           intel-media-driver-git = intel-media-driver-git;
         };
         overlays.default = inputs.nixpkgs.lib.composeExtensions intel-media-driver-git linux-firmware-git;
         devShells.default = pkgs.mkShell {
-          packages = [mojo];
+          packages = [mojo magic];
         };
       }
     );
