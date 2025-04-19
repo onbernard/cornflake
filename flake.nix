@@ -18,7 +18,11 @@
         linux-firmware-git = import ./overlays/linux-firmware-git;
         intel-media-driver-git = import ./overlays/intel-media-driver-git;
       in {
-        packages.mojo = mojo;
+        packages = {
+          mojo = mojo;
+          linux-firmware-git = linux-firmware-git;
+          intel-media-driver-git = intel-media-driver-git;
+        };
         overlays.default = inputs.nixpkgs.lib.composeExtensions intel-media-driver-git linux-firmware-git;
         devShells.default = pkgs.mkShell {
           packages = [mojo];
