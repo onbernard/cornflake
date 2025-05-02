@@ -22,13 +22,6 @@ in
     pname = "magic";
     version = "0.7.2";
 
-    binary =
-      if stdenv.hostPlatform.system == "x86_64-linux"
-      then "magic-x86_64-linux-musl"
-      else if stdenv.hostPlatform.system == "aarch64-linux"
-      then "magic-"
-      else throw "Unsupported platform";
-
     src = fetchurl {
       url = "https://dl.modular.com/public/magic/raw/versions/${version}/magic-${arch}-${platform}";
       sha256 = "sha256-L+zh1XH9RD+XqcxC1A9V9a09ZN6bda84e4khLimN7NU=";
