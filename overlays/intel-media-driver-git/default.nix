@@ -1,6 +1,6 @@
 final: prev:
 {
   intel-media-driver-git = prev.intel-media-driver.overrideAttrs (oldAttrs: {
-    version = "25.2.1";
+    version = "25.2.4";
   });
 }
