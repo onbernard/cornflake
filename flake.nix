@@ -32,6 +32,9 @@
         devShells.default = pkgs.mkShell {
           packages = [mojo magic];
         };
+        nixosConfigurations = {
+          nixos = import ./hosts/nixos {inherit inputs;};
+        };
       }
     );
 }
