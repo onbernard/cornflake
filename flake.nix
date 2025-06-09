@@ -11,7 +11,7 @@
     inputs.flake-utils.lib.eachDefaultSystem (
       system: let
         linux-firmware-git = import ./overlays/linux-firmware-git;
-        intel-media-driver-git = import ./overlays/intel-media-driver-git;
+        intel-media-driver-git = import ./overlays/intel-media-driver-git {inherit pkgs;};
         alsa-ucm-conf-git = import ./overlays/alsa-ucm-conf-git;
 
         overlays = [linux-firmware-git intel-media-driver-git alsa-ucm-conf-git];
